@@ -1,5 +1,6 @@
 package ch.iet_gibb.media.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ public abstract class Media {
     private List<String> genres;
     private List<String> creators;
     private List<RentHistoryItem> rentHistory;
+    private final String uuid;
 
     /**
      * Constructor to initialize the common attributes of media.
@@ -27,13 +29,14 @@ public abstract class Media {
      * @param year      The year the media was released or published.
      * @param genres    A list of genres associated with the media.
      * @param creators  A list of creators (e.g., authors, directors).
-     * @param available The availability status of the media (true if available).
      */
     public Media(String title, String year, List<String> genres, List<String> creators) {
         this.title = title;
         this.year = year;
         this.genres = genres;
         this.creators = creators;
+        this.rentHistory = new ArrayList<RentHistoryItem>();
+        this.uuid = java.util.UUID.randomUUID().toString();
     }
 
     /**
@@ -145,6 +148,9 @@ public abstract class Media {
      * @return The current rent. If no open rent, returns null.
      */
     public RentHistoryItem getCurrentRentFromHistory() {
+        if (rentHistory.isEmpty()) {
+            return null;
+        }
         RentHistoryItem lastItem = rentHistory.getLast();
         if (lastItem.GetGivenBackAt() == null) {
             return lastItem;
@@ -158,5 +164,13 @@ public abstract class Media {
      */
     public boolean IsAvailable() {
         return getCurrentRentFromHistory() == null;
+    }
+
+    /**
+     * Gets the uuid of the object.
+     * @return The UUID as a string.
+     */
+    public String GetUuid() {
+        return uuid;
     }
 }
