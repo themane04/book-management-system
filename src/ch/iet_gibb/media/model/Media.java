@@ -17,6 +17,11 @@ public abstract class Media {
         this.available = available;
     }
 
+    @Override
+    public String toString() {
+        return "Title: " + title + "\nYear: " + year + "\nGenres: " + genres + "\nCreators: " + creators + "\nAvailable: " + available;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
