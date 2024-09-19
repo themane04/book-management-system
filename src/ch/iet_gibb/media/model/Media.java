@@ -19,7 +19,6 @@ public abstract class Media {
     private List<String> genres;
     private List<String> creators;
     private List<RentHistoryItem> rentHistory;
-    private boolean available;
 
     /**
      * Constructor to initialize the common attributes of media.
@@ -30,12 +29,11 @@ public abstract class Media {
      * @param creators  A list of creators (e.g., authors, directors).
      * @param available The availability status of the media (true if available).
      */
-    public Media(String title, String year, List<String> genres, List<String> creators, boolean available) {
+    public Media(String title, String year, List<String> genres, List<String> creators) {
         this.title = title;
         this.year = year;
         this.genres = genres;
         this.creators = creators;
-        this.available = available;
     }
 
     /**
@@ -123,39 +121,29 @@ public abstract class Media {
     }
 
     /**
-     * Sets the availability status of the media.
-     *
-     * @param available The availability status to set (true if available).
-     */
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
-
-    /**
-     * Returns the availability status of the media.
-     *
-     * @return true if the media is available, false otherwise.
-     */
-    public boolean isAvailable() {
-        return this.available;
-    }
-
-    /**
      * Returns a string representation of the media object.
      *
      * @return A string representation of the media object.
      */
     @Override
     public String toString() {
-        return "Title: " + title + "\nYear: " + year + "\nGenres: " + genres + "\nCreators: " + creators + "\nAvailable: " + available;
+        return "Title: " + title + "\nYear: " + year + "\nGenres: " + genres + "\nCreators: " + creators + "\nAvailable: " + IsAvailable();
     }
 
+    /**
+     * Adds a new item to the history. Only works if there is no open rent.
+     * @param item The new rent item to add.
+     */
     public void addToRentHistory(RentHistoryItem item) {
         if (getCurrentRentFromHistory() == null) {
             rentHistory.add(item);
         }
     }
 
+    /**
+     * Gets the current rent from the history.
+     * @return The current rent. If no open rent, returns null.
+     */
     public RentHistoryItem getCurrentRentFromHistory() {
         RentHistoryItem lastItem = rentHistory.getLast();
         if (lastItem.GetGivenBackAt() == null) {
@@ -164,6 +152,10 @@ public abstract class Media {
         return null;
     }
 
+    /**
+     * Checks if the media is available from the history.
+     * @return Boolean if it is available.
+     */
     public boolean IsAvailable() {
         return getCurrentRentFromHistory() == null;
     }
