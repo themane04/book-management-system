@@ -31,7 +31,7 @@ public class Film extends Media {
                 boolean available,
                 List<String> actors,
                 String duration) {
-        super(title, year, genres, creators, available);
+        super(title, year, genres, creators);
         this.actors = actors;
         this.duration = duration;
     }
