@@ -27,8 +27,8 @@ public class Book extends Media {
      * @param isbn      The ISBN of the book (must be 13 characters long).
      * @param pages     The number of pages in the book (must be greater than 0).
      */
-    public Book(String title, String year, List<String> genres, List<String> creators, boolean available, String isbn, int pages) {
-        super(title, year, genres, creators, available); // Calling the superclass constructor (Media)
+    public Book(String title, String year, List<String> genres, List<String> creators, String isbn, int pages) {
+        super(title, year, genres, creators); // Calling the superclass constructor (Media)
         this.setIsbn(isbn);  // Set the ISBN using a setter with validation
         this.setPages(pages);  // Set the page count using a setter with validation
     }
