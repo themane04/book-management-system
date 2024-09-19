@@ -1,0 +1,75 @@
+@startuml
+class ch.iet_gibb.media.model.RentHistoryItem {
+- Date rentedAt
+- Date givenBackAt
+# String rentedBy
+~ <<Create>> RentHistoryItem(Date,Date,String)
+- void SetRentedAt(Date)
++ void SetGivenBackAt(Date)
++ Date GetRentedAt()
++ Date GetGivenBackAt()
+}
+
+
+class ch.iet_gibb.media.model.Book {
+- String isbn
+- int pages
++ <<Create>> Book(String,String,List<String>,List<String>,String,int)
+# void checkIsbn(String)
++ void setIsbn(String)
++ String getIsbn()
+# void checkPages(int)
++ void setPages(int)
++ int getPages()
++ String toString()
+}
+
+
+class ch.iet_gibb.media.application.MediaApp {
++ {static} void main(String[])
+}
+
+abstract class ch.iet_gibb.media.model.Media {
+- String title
+- String year
+- List<String> genres
+- List<String> creators
+- List<RentHistoryItem> rentHistory
+- String uuid
++ <<Create>> Media(String,String,List<String>,List<String>)
+# void checkTitle(String)
++ void setTitle(String)
++ String getTitle()
+# void checkYear(String)
++ void setYear(String)
++ String getYear()
+# void checkGenres(List<String>)
++ void setGenres(List<String>)
++ List<String> getGenres()
+# void checkCreators(List<String>)
++ void setCreators(List<String>)
++ List<String> getCreators()
++ String toString()
++ void addToRentHistory(RentHistoryItem)
++ RentHistoryItem getCurrentRentFromHistory()
++ boolean IsAvailable()
++ String GetUuid()
+}
+
+
+class ch.iet_gibb.media.model.Film {
+# List<String> actors
+# String duration
++ <<Create>> Film(String,String,List<String>,List<String>,boolean,List<String>,String)
++ List<String> getActors()
++ void setActors(List<String>)
+}
+
+
+class ch.iet_gibb.media.test.MediaTest {
+}
+
+
+ch.iet_gibb.media.model.Media <|-- ch.iet_gibb.media.model.Book
+ch.iet_gibb.media.model.Media <|-- ch.iet_gibb.media.model.Film
+@enduml
