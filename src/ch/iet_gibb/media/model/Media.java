@@ -18,6 +18,7 @@ public abstract class Media {
     private String year;
     private List<String> genres;
     private List<String> creators;
+    private List<RentHistoryItem> rentHistory;
     private boolean available;
 
     /**
@@ -146,10 +147,24 @@ public abstract class Media {
      */
     @Override
     public String toString() {
-        return "title='" + this.title + '\'' +
-                ", year='" + this.year + '\'' +
-                ", genres=" + this.genres +
-                ", creators=" + this.creators +
-                ", available=" + this.available;
+        return "Title: " + title + "\nYear: " + year + "\nGenres: " + genres + "\nCreators: " + creators + "\nAvailable: " + available;
+    }
+
+    public void addToRentHistory(RentHistoryItem item) {
+        if (getCurrentRentFromHistory() == null) {
+            rentHistory.add(item);
+        }
+    }
+
+    public RentHistoryItem getCurrentRentFromHistory() {
+        RentHistoryItem lastItem = rentHistory.getLast();
+        if (lastItem.GetGivenBackAt() == null) {
+            return lastItem;
+        }
+        return null;
+    }
+
+    public boolean IsAvailable() {
+        return getCurrentRentFromHistory() == null;
     }
 }
