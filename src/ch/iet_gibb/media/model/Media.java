@@ -7,6 +7,7 @@ public abstract class Media {
     private String year;
     private List<String> genres;
     private List<String> creators;
+    private List<RentHistoryItem> rentHistory;
     private boolean available;
 
     public Media(String title, String year, List<String> genres, List<String> creators, boolean available) {
@@ -55,5 +56,23 @@ public abstract class Media {
 
     public boolean isAvailable() {
         return available;
+    }
+
+    public void addToRentHistory(RentHistoryItem item) {
+        if (getCurrentRentFromHistory() == null) {
+            rentHistory.add(item);
+        }
+    }
+
+    public RentHistoryItem getCurrentRentFromHistory() {
+        RentHistoryItem lastItem = rentHistory.getLast();
+        if (lastItem.GetGivenBackAt() == null) {
+            return lastItem;
+        }
+        return null;
+    }
+
+    public boolean IsAvailable() {
+        return getCurrentRentFromHistory() == null;
     }
 }
