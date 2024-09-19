@@ -7,6 +7,7 @@ import java.util.List;
  * relevant to books, such as ISBN and the number of pages.
  * It extends the Media class, inheriting general media attributes like title,
  * year of publication, genres, and creators.
+ *
  * @author Cool Team
  * @version 0.1
  * @since 2024-09-19
@@ -23,7 +24,6 @@ public class Book extends Media {
      * @param year      The year the book was published.
      * @param genres    A list of genres the book belongs to.
      * @param creators  A list of creators (e.g., authors) of the book.
-     * @param available Availability status of the book (true if available).
      * @param isbn      The ISBN of the book (must be 13 characters long).
      * @param pages     The number of pages in the book (must be greater than 0).
      */

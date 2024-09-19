@@ -16,13 +16,13 @@ public class Film extends Media {
     /**
      * Creates a new film.
      *
-     * @param title the title of the film
-     * @param year the year of the film
-     * @param genres the genres of the film
-     * @param creators the creators of the film
+     * @param title     the title of the film
+     * @param year      the year of the film
+     * @param genres    the genres of the film
+     * @param creators  the creators of the film
      * @param available the availability of the film
-     * @param actors the actors of the film
-     * @param duration the duration of the film
+     * @param actors    the actors of the film
+     * @param duration  the duration of the film
      */
     public Film(String title,
                 String year,
@@ -38,14 +38,14 @@ public class Film extends Media {
 
     /**
      * Returns the duration of the film.
-     * */
+     */
     public List<String> getActors() {
         return actors;
     }
 
     /**
      * Sets the duration of the film.
-     * */
+     */
     public void setActors(List<String> actors) {
         this.actors = actors;
     }
