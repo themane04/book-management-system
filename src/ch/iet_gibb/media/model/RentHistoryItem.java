@@ -5,7 +5,7 @@ import java.util.Date;
 public class RentHistoryItem {
     private Date rentedAt;
     private Date givenBackAt;
-    private String rentedBy;
+    protected String rentedBy;
 
     RentHistoryItem(Date RentedAt, Date GivenBackAt, String RentedBy) {
         SetRentedAt(RentedAt);
